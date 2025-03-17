@@ -43,6 +43,7 @@ jobs:
           source venv/bin/activate  # Activate virtual environment
           pip install flake8  # Install flake8 if not included in requirements.txt
           flake8 .  # Run flake8 linter
+          flake8 --ignore E501
 
       # Step 6: Build application (optional)
       - name: Build application
