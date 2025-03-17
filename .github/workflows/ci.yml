@@ -17,35 +17,35 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 2: Set up Python environment
+      # Step 2: Set up Python
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'  # You can adjust this to your required Python version
+          python-version: '3.8'  # Adjust to your Python version
 
       # Step 3: Install dependencies
       - name: Install dependencies
         run: |
           python -m venv venv  # Create a virtual environment
           source venv/bin/activate  # Activate the virtual environment
-          pip install --upgrade pip  # Upgrade pip to the latest version
+          pip install --upgrade pip  # Upgrade pip
           pip install -r requirements.txt  # Install dependencies from requirements.txt
 
       # Step 4: Run tests
       - name: Run tests
         run: |
-          source venv/bin/activate  # Activate the virtual environment
-          pytest  # Run tests with pytest (or use another framework if you're using one)
+          source venv/bin/activate  # Activate virtual environment
+          pytest  # Run tests
 
-      # Step 5: Lint code (optional)
+      # Step 5: Lint code using flake8
       - name: Lint code
         run: |
-          source venv/bin/activate  # Activate the virtual environment
-          flake8 .  # You can use any linter like flake8 or pylint
+          source venv/bin/activate  # Activate virtual environment
+          pip install flake8  # Install flake8 if not included in requirements.txt
+          flake8 .  # Run flake8 linter
 
-      # Step 6: Build the application (if applicable for your use case)
+      # Step 6: Build application (optional)
       - name: Build application
         run: |
-          source venv/bin/activate  # Activate the virtual environment
-          # Run any necessary build tasks here (e.g., generating static files, etc.)
-          echo "Building the Flask app"  # Modify this based on your build requirements
+          source venv/bin/activate  # Activate virtual environment
+          echo "Building the application"
